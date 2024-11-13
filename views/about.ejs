@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Apni Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, #ffffff, pink);
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: black;
+    color: #fff;
+}
+
+.nav-left h1 {
+    font-size: 1.5rem;
+    margin-right: auto;
+}
+
+.nav-right a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.intro {
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.books img {
+    width: 100px;
+    height: 150px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.books img:hover {
+    transform: scale(1.1);
+}
+
+.profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.profile {
+    max-width: 200px;
+    text-align: center;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.profile h2 {
+    font-size: 1.3rem;
+    color: black;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 5px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.follow-more p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+footer {
+    background-color: black;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-right {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .books img {
+        width: 80px;
+        height: 120px;
+    }
+
+    .profile h2 {
+        font-size: 1.1rem;
+    }
+
+    .nav-left h1 {
+        font-size: 1.2rem;
+    }
+}
+
+    </style>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <h1>Apni Library</h1>
+        </div>
+        <div class="nav-right">
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+                 
+            <% if(!currUser) { %>
+                <a href="/signup">Signup</a>
+                <a href="/login">login</a>
+            <% } %> 
+  
+            <% if(currUser) { %>
+              <a  href="/logout">logout</a>
+            <% } %> 
+        </div>
+        <!-- Responsive menu button -->
+        <button class="menu-toggle">☰</button>
+    </nav>
+
+    
+
+    <!-- Main Content -->
+    <main>
+        <!-- Intro Paragraph -->
+        <section class="intro">
+            <p>Welcome to Apni Library, your go-to source for a vast collection of books and resources. Discover, learn, and get inspired by our carefully curated selection, perfect for all book enthusiasts.</p>
+        </section>
+
+        <!-- Books Section -->
+        <section class="books">
+            <img src="/images/book1.jpg" alt="Book 1">
+            <img src="/images/book2.jpg" alt="Book 2">
+            <img src="/images/book3.jpg" alt="Book 3">
+            <img src="/images/book1.jpg" alt="Book 4">
+        </section>
+
+        <!-- Profiles Section -->
+        <section class="profiles">
+            <!-- Profile 1 -->
+            <div class="profile">
+                <img src="/images/lucky1.JPG" alt="Profile 1 Picture">
+                <h2>Lucky gole</h2>
+                <p>Web Developer & Designer of Apni Library</p>
+                <div class="social-links">
+                    <a href="https://github.com/luckygole">GitHub</a>
+                    <a href="https://www.linkedin.com/in/laksh-gole-81502731a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+                    <a href="https://www.instagram.com/mr.laksh_._gole/?__pwa=1">Instagram</a>
+                </div>
+            </div>
+            
+            <!-- Profile 2 -->
+            <div class="profile">
+                <img src="/images/bhumika1.jpg" alt="Profile 2 Picture">
+                <h2>Bhumika sahu</h2>
+                <p>Web Developer & Co-Creator of Apni Library</p>
+                <div class="social-links">
+                    <a href="https://github.com/Bhumika-Sahu-bit">GitHub</a>
+                    <a href="https://www.linkedin.com/in/bhumika-sahu-b178a22b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+                    <a href="https://www.instagram.com/bhumika_sahu.1612/profilecard/?igsh=ZGhvY2JuZWU5MDY4">Instagram</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Follow for More -->
+        <section class="follow-more">
+            <p>Follow us for updates on new book collections and features!</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Apni Library. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+const navRight = document.querySelector('.nav-right');
+
+menuToggle.addEventListener('click', () => {
+    navRight.style.display = navRight.style.display === 'flex' ? 'none' : 'flex';
+});
+
+    // Function to close the alert
+    function closeAlert(alertId) {
+            document.getElementById(alertId).style.display = 'none';
+        }
+    
+        // Example to display alerts (you can call this from your backend logic)
+        function showAlert(type) {
+            if (type === 'login') {
+                document.getElementById('successAlert').style.display = 'flex';
+            } else if (type === 'error') {
+                document.getElementById('errorAlert').style.display = 'flex';
+            }
+        }
+    </script>
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

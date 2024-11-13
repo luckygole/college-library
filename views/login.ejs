@@ -1,0 +1,133 @@
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+    
+
+<div class="row">
+    <h1 class="col-6 offset-3">Login in wanderlust</h1>
+    <div class="col-6 offset-3">
+        <form action="/login" method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="username" class="form-label">username</label>
+                <input name="username" id="username" type="text" placeholder="enter a username" class="form-control" required>
+               
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">password</label>
+                <input name="password" id="password" type="password" placeholder="enter a password" class="form-control" required>
+               
+            </div>
+            <button class="btn btn-success">Login</button>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
+ -->
+
+<!-- 
+login data old -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheet/login.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+
+
+</head>
+<h>
+
+    <a href="http://localhost:3000/home" class="back-button">back to home</a>
+
+           <!-- Success Alert -->
+           <% if(success && success.length) { %>
+            <div class="alert alert-success" id="successAlert">
+                <span><%= success %></span>
+                <button class="close-btn" onclick="closeAlert('successAlert')">&times;</button>
+            </div>
+            <% } %>
+            
+            <!-- Error Alert -->
+            <% if(error && error.length) { %>
+            <div class="alert alert-error" id="errorAlert" >
+                <span><%= error %></span>
+                <button class="close-btn" onclick="closeAlert('errorAlert')">&times;</button>
+            </div>
+            <% } %>
+                   
+<!-- 
+<div class="row"> -->
+    <div class="container">
+        <h2 class="title">Login</h2>
+        <form action="/login" method="post" class="form-container">
+            <div class="input-box email">
+                <label for="username" class="form-label"></label><br>
+                <input name="username" id="username" type="text" placeholder="enter a username" class="form-control" required>
+
+
+                <!-- <input type="text"  id="email-input" required placeholder="Enter your Username" name="username"> -->
+
+                <img src="https://cdn-icons-png.flaticon.com/512/6325/6325109.png" alt="user-image" width="25px">
+            </div>
+            <div class="input-box password">
+
+                <label for="password" class="form-label"></label>
+                <input name="password" id="password" type="password" placeholder="enter a password" class="form-control" required>
+
+
+                <!-- <input type="password"  id="password-input" required placeholder="Password" name ="password"> -->
+                <img src="https://cdn-icons-png.flaticon.com/512/2489/2489659.png" alt="lock-image" width="22px">
+            </div>
+          
+            <div class="button">
+                <button class="login">Login</button>
+            </div>
+            <div class="register">
+                <p>Don't you have an account ?<a href="http://localhost:3000/signup">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+           // Function to close the alert
+           function closeAlert(alertId) {
+            document.getElementById(alertId).style.display = 'none';
+        }
+    
+        // Example to display alerts (you can call this from your backend logic)
+        function showAlert(type) {
+            if (type === 'login') {
+                document.getElementById('successAlert').style.display = 'flex';
+            } else if (type === 'error') {
+                document.getElementById('errorAlert').style.display = 'flex';
+            }
+        }
+    
+        // Example Usage
+        // showAlert('login'); // Call when login happens
+        // showAlert('logout'); // Call when logout happens
+
+
+    </script>
+
+</html>
+</body>

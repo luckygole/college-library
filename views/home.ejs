@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apni Library</title>
+    <link rel="stylesheet" href="/stylesheet/home.css"> 
+    <link rel="icon" href="/images/main-image2.png">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+</head>
+<body>
+
+      <!-- Navbar Structure -->
+      <nav class="navbar">
+        <h1>Apni library</h1>
+        
+        <!-- Menu Button and Checkbox -->
+        <label for="menu-toggle" class="menu-btn">☰</label>
+        <input type="checkbox" id="menu-toggle">
+        
+        <!-- Links -->
+        <div class="navbar-links">
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+          
+            <% if(!currUser) { %>
+                <a class="nav-link" href="/signup">Signup</a>
+                <a class="nav-link" href="/login">login</a>
+            <% } %> 
+  
+            <% if(currUser) { %>
+              <a class="nav-link" href="/logout">logout</a>
+            <% } %> 
+        </div>
+    </nav>
+
+       <!-- Success Alert -->
+       <% if(success && success.length) { %>
+<div class="alert alert-success" id="successAlert">
+    <span><%= success %></span>
+    <button class="close-btn" onclick="closeAlert('successAlert')">&times;</button>
+</div>
+<% } %>
+
+<!-- Error Alert -->
+<% if(error && error.length) { %>
+<div class="alert alert-error" id="errorAlert" >
+    <span><%= error %></span>
+    <button class="close-btn" onclick="closeAlert('errorAlert')">&times;</button>
+</div>
+<% } %>
+       
+
+    <!-- Landing Page -->
+    <div class="main-page">
+    <div class="main-content">
+        <h1>Welcome to Apni Library <% if(currUser && currUser) { %>
+            <%= currUser.username %> 
+         <% } %>
+           </h1>
+        <p> This is our website
+            of BCA. This library site is easy to use and work on it. You can also Sign in in this site or if you
+            already have an then you can simply just login into your account...</p>
+        <button class="explore-btn">Explore More</button>
+        <div class="book-images">
+            <img src="/images/book1.jpg" alt="Book 1">
+            <img src="/images/book2.jpg" alt="Book 2">
+            <img src="/images/book3.jpg" alt="Book 3">
+        </div>
+    </div>
+        <div class="main-image">
+            <img src="/images/main-image2.png" alt="People Studying">
+        </div>
+    </div>
+     
+    <!-- //create new content // -->
+    <!-- <div id="uploadButton"> -->
+    <form method="GET" action="/home/index" class="button-container" id="uploadButton">
+        <button class="btn" id="uploadButton">Create New Content</button>
+        <!-- <button id="uploadButton">Upload Notes</button> -->
+    </form>
+    <!-- </div> -->
+
+    <div class="slider" style ="
+            --height:250px; 
+            --width : 200px;
+            --quantity:10;
+            ">
+        <div class="list">
+            <div class="item" style="--position: 1"><img src="/images/book1.jpg" alt="images"></div>
+            <div class="item" style="--position: 2"><img src="/images/book2.jpg" alt="images"></div>
+            <div class="item" style="--position: 3"><img src="/images/book3.jpg" alt="images"></div>
+            <div class="item" style="--position: 4"><img src="/images/book1.jpg" alt="images"></div>
+            <div class="item" style="--position: 5"><img src="/images/book2.jpg" alt="images"></div>
+            <div class="item" style="--position: 6"><img src="/images/book3.jpg" alt="images"></div>
+            <div class="item" style="--position: 7"><img src="/images/book1.jpg" alt="images"></div>   
+            <div class="item" style="--position: 8"><img src="/images/book2.jpg" alt="images"></div>
+            <div class="item" style="--position: 9"><img src="/images/book3.jpg" alt="images"></div>
+            <div class="item" style="--position: 10"><img src="/images/book1.jpg" alt="images"></div>
+        </div>
+             </div>
+  
+        <h1 class="data">Here your content of BCA</h1>        
+
+     <!-- Sections -->
+     <% try { %>
+        <div class="sections">
+        
+            <% semesters.forEach(semester => { %>
+                <div class="section"> 
+                    <a href="/semester/<%= semester._id %>"><%= semester.name %></a><br>
+                </div>
+            <% }) %>
+        </div>
+        </div>
+     <%} catch { %>
+        <div class="section">
+            <a href="#" style="text-align: center;">Semester is not available right now !</a>
+        </div>
+       
+    <% } %>
+    <br><hr>
+
+
+
+
+    
+     <!-- Feedback Form -->
+     <div class="feedback-form">
+        <h2>Feedback</h2>
+        <form method="post" action="/home">
+            <input type="email" name="email" placeholder="Enter your email" required>
+                <textarea name="content" placeholder="Your feedback" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- <h2 style="text-align: center; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; text-decoration: double; border-bottom: 1px double black; ">All Feed-back</h2> -->
+    <h1 class="feed-back-h1">All feed-back</h1>
+   
+  
+ 
+
+    <div class="feedback-container">
+        <% try { %>
+               <% if (feedbackList && feedbackList.length > 0) { %>
+                   <% feedbackList.forEach(feedback => { %>
+                       <div class="feedback-card">
+                
+                       <p class="feedback-email"><strong>Created by :</strong> <%= feedback.owner.username %></p>
+                       <p class="feedback-content"><strong>Feedback:</strong> <b><%= feedback.content %></b></p>
+                  
+                       <p><%= feedback.create_at.toString().split(" ").slice(0,4).join(" ")%></p>
+                       <hr>
+                       <% if(currUser && currUser) { %>
+                       <form  method="post" action="/home/<%= feedback._id %>?_method=DELETE">
+                        <button class="btn btn-sm btn-dark">Delete</button>
+                      </form>
+                      <% } %>
+                       </div>
+                   <% }) %>
+               <% } else { %>
+                   <p style="text-align: center;">No feedback available</p>
+               <% } %>
+          
+        <% } catch { %>
+           <p style="text-align: center; position: relative;">No feedback available right now!</p>
+       <% } %>
+    </div>
+     
+       
+
+    <!-- Footer -->
+    <footer>
+            <p>&copy; 2024 Apni Library. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to close the alert
+        function closeAlert(alertId) {
+            document.getElementById(alertId).style.display = 'none';
+        }
+    
+        // Example to display alerts (you can call this from your backend logic)
+        function showAlert(type) {
+            if (type === 'login') {
+                document.getElementById('successAlert').style.display = 'flex';
+            } else if (type === 'error') {
+                document.getElementById('errorAlert').style.display = 'flex';
+            }
+        }
+    
+        // Example Usage
+        // showAlert('login'); // Call when login happens
+        // showAlert('logout'); // Call when logout happens
+
+
+
+        //create note button//
+        document.getElementById("uploadButton").addEventListener("click", function() {
+    const secretCode = "mylucky"; // Replace with your actual code
+    const userInput = prompt("Enter the secret code to upload notes:");
+
+    if (userInput === secretCode) {
+        // Code matches, proceed with upload
+        // Call your upload function or redirect to the upload page
+        alert("Code correct! Proceeding to upload...");
+    } else {
+        // Incorrect code, show error
+        event.preventDefault();
+        alert("Incorrect code. Access denied.");
+    }
+});
+
+    </script>
+</body>
+</html>
