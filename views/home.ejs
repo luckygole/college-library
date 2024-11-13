@@ -152,7 +152,7 @@
                   
                        <p><%= feedback.create_at.toString().split(" ").slice(0,4).join(" ")%></p>
                        <hr>
-                       <% if(currUser && currUser) { %>
+                       <% if(currUser && currUser._id.equals(feedback.owner._id)) { %>
                        <form  method="post" action="/home/<%= feedback._id %>?_method=DELETE">
                         <button class="btn btn-sm btn-dark">Delete</button>
                       </form>
