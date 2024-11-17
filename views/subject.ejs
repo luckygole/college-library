@@ -200,6 +200,8 @@
 <!-- Main Page Content -->
 <h1>Subject: <%= subject.name %></h1>
 
+
+
 <!-- Scrollable Container -->
 <div class="container">
     
@@ -207,8 +209,16 @@
     <ul >
       <% subject.notes.forEach(note => { %>
         <li class="section">
-            <strong><%= note.title %></strong> 
-            <a href="<%= note.filePath %>">Download PDF</a>
+            <% if (subject.notes && subject.notes.length > 0) { %>
+                <% subject.notes.forEach(note => { %>
+                  <div>
+                    <strong><%= note.title %></strong>
+                    <a href="<%= note.pdfLink %>" target="_blank">View PDF</a>
+                  </div>
+                <% }); %>
+              <% } else { %>
+                <p>No notes available for this subject.</p>
+              <% } %>
         </li>
       <% }) %>
     </ul>

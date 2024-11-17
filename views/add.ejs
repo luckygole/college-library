@@ -8,16 +8,17 @@
 <body>
     <h1>Add Note to <%= subject.name %></h1>
 
-    <form action="/subject/<%= subject._id %>/add-note" method="POST" enctype="multipart/form-data">
-     
+    <form action="/subject/<%= subject._id %>/add-note" method="POST">
       <label for="title">PDF Title:</label>
-        <input type="text" name="title" id="title" required>
-        
-        <label for="pdf">Choose PDF File:</label>
-        <input type="file" name="pdf" id="pdf" accept="application/pdf">
-      
+      <input type="text" name="title" id="title" required>
+    
+      <label for="pdfLink">Choose PDF Link (OneDrive):</label>
+      <input type="url" name="pdfLink" id="pdfLink" placeholder="Enter OneDrive link" required>
+    
       <button type="submit">Add Note</button>
     </form>
+    
+    
     <a href="/subject/<%= subject._id %>">View Uploaded notes</a>
 </body>
 </html>
