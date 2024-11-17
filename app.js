@@ -209,7 +209,7 @@ app.get("/subject/:id/add", async (req, res) => {
 app.get("/subject/:id", async (req, res) => {
   try {
     const subject = await Subject.findById(req.params.id)
-      .populate("notes") // Populate the notes field with note data
+      .populate("notes").populate("semesterId") // Populate the notes field with note data
       .exec();
 
     if (!subject) {
