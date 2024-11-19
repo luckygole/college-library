@@ -273,7 +273,7 @@ filter: grayscale(0);
     margin-bottom: 20px;
     text-align: center;
 }
-.feedback-form input, 
+.feedback-form fieldset, 
 .feedback-form textarea {
     width: 96%;
     padding: 10px;

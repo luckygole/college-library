@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 const Schema = mongoose.Schema;
 // mongoose.connect("mongodb://127.0.0.1:27017/learning-website");
 
 const feedback = mongoose.Schema({
-  email: {
-    type: String,
-    require: true,
+  rating:{
+    type : Number,
+    min : 1,
+    max : 5,
   },
   content: {
     type: String,

@@ -6,6 +6,7 @@
     <title>Apni Library</title>
     <link rel="stylesheet" href="/stylesheet/home.css"> 
     <link rel="icon" href="/images/main-image2.png">
+    <link rel="stylesheet" href="/stylesheet/rating.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
 </head>
 <body>
@@ -129,7 +130,23 @@
      <div class="feedback-form">
         <h2>Feedback</h2>
         <form method="post" action="/home">
-            <input type="email" name="email" placeholder="Enter your email" required>
+            <!-- <input type="email" name="email" placeholder="Enter your email" required> -->
+            <!-- <label for="rating"  class="form-label">Rating</label> -->
+
+            <fieldset class="starability-heartbeat">
+                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="rating" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="rating" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="rating" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="rating" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="rating" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+              </fieldset>
+         
                 <textarea name="content" placeholder="Your feedback" required></textarea>
             <button type="submit">Submit</button>
         </form>
@@ -148,6 +165,7 @@
                        <div class="feedback-card">
                 
                        <p class="feedback-email"><strong>Created by :</strong> <%= feedback.owner.username %></p>
+                       <p class="starability-result feedback-email" data-rating="<%= feedback.rating %>"></p>
                        <p class="feedback-content"><strong>Feedback:</strong> <b><%= feedback.content %></b></p>
                   
                        <p><%= feedback.create_at.toString().split(" ").slice(0,4).join(" ")%></p>

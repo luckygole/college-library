@@ -160,15 +160,17 @@ app.post("/add-semester", async (req, res) => {
 // feedback route
 app.post("/home", isloggedIn, async (req, res) => {
   try {
-    let { email, content, owner } = req.body;
+    console.log(req.body.rating);
+    let { rating, content, owner } = req.body;
     let allfeedback = new feedback({
-      email: email,
+      rating :rating,
       content: content,
       owner: owner,
       create_at: new Date(),
     });
     allfeedback.owner = req.user._id;
     await allfeedback.save();
+    console.log(allfeedback);
     const { username } = req.user;
 
     req.flash("success", `Feedback submitted.Thank-You ${username}`);
